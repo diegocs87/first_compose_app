@@ -42,9 +42,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier.background(Color.Magenta),
     )
-    Button(onClick = { }) {
+    Button(onClick = { onClick() }) {
 
     }
+}
+
+private fun onClick(){
+
 }
 
 @Preview(showBackground = true)
