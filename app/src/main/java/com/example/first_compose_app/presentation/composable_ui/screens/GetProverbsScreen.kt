@@ -6,13 +6,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.example.first_compose_app.presentation.composable_ui.composables.ProverbsButton
 import com.example.first_compose_app.presentation.composable_ui.composables.ProverbsCard
+import com.example.first_compose_app.presentation.composable_ui.model.Proverbs
 
 @Composable
-fun GetProverbsScreen(){
+fun GetProverbsScreen(proverbsList:List<Proverbs>){
     LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)){
-        items(10){
-            ProverbsCard()
-        }
+        proverbsList.forEach { currentProverb -> item { ProverbsCard(currentProverb) } }
     }
     ProverbsButton ()
 }

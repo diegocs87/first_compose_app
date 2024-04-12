@@ -1,9 +1,9 @@
 package com.example.first_compose_app.presentation.composable_ui.composables
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,42 +21,56 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.first_compose_app.R
+import com.example.first_compose_app.presentation.composable_ui.model.Proverbs
 
-private val elevatedCarModifier = Modifier.padding(start = 10.dp, end = 10.dp).fillMaxWidth()
+private val elevatedCarModifier = Modifier
+    .padding(start = 10.dp, end = 10.dp)
+    .fillMaxWidth()
 
 @Composable
-fun ProverbsCard() {
-    val customColor = Color(0xFF27B7BB)
+fun ProverbsCard(proverb:Proverbs) {
+    val customColor = Color.LightGray
     val cardColors = CardDefaults.cardColors(containerColor = customColor)
-    val painterResource = painterResource(id = R.drawable.chelsea2)
     ElevatedCard(modifier = elevatedCarModifier , colors = cardColors) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(painter = painterResource, contentDescription = "Chelsea F.C logo",
-                Modifier
-                    .size(70.dp)
-                    .fillMaxSize())
-            Column {
-                Text(
-                    "Chelsea F.C",
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 30.sp,
-                    modifier = Modifier
-                        .padding(start = 15.dp, end = 15.dp)
-                        .fillMaxSize()
-                )
-
-                Text(
-                    "Funded in: ",
-                    color = Color.Black,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .padding(start = 15.dp, end = 15.dp)
-                        .fillMaxSize()
-                )
-            }
-        }
+        TeamInfoRow(proverb)
     }
+}
+
+@Composable
+fun TeamInfoRow(proverb:Proverbs){
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        TeamInfoImage(idResource = R.drawable.chelseafc)
+        TeamInfoTextColumn(proverb)
+    }
+}
+
+@Composable
+fun TeamInfoImage(idResource:Int){
+    val logoResource = painterResource(id = idResource)
+    Image(painter = logoResource, contentDescription = "Chelsea F.C logo",
+        Modifier
+            .size(70.dp)
+            .fillMaxSize()
+            .fillMaxHeight())
+}
+
+@Composable
+fun TeamInfoTextColumn(proverb:Proverbs){
+    Column {
+        TeamInfoText(text = "Src: " + proverb.src)
+        TeamInfoText(text = "Proverb: " +proverb.proverb)
+    }
+}
+
+@Composable
+fun TeamInfoText(text:String){
+    Text(
+        text,
+        color = Color.Black,
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier
+            .padding(start = 15.dp, end = 15.dp)
+            .fillMaxSize()
+    )
 }
