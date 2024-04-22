@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import com.example.first_compose_app.R
 
 @Composable
-fun optionsTabsMenu() {
+fun OptionsTabsMenu() {
     TabRow(
         selectedTabIndex = 0,
         modifier = Modifier.background(Color.Magenta)
@@ -34,9 +34,4 @@ fun optionsTabsMenu() {
         }
         // Otras pestañas...
     }
-}
-
-@Composable
-fun cooo(){
-    Icon(painter = painterResource(id = R.drawable.balance_icon), contentDescription = "Home Picture")
 }
