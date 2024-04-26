@@ -10,9 +10,7 @@ import androidx.compose.ui.text.font.FontFamily
 @Composable
 //fun proverbsButton(onClick: () ->Unit){
 fun ProverbsButton(){
-    ElevatedButton(onClick = {},
-        colors = ButtonDefaults.buttonColors(
-        contentColor = Color.Black)) {
+    ElevatedButton(onClick = {}, colors = ButtonDefaults.buttonColors(contentColor = Color.Black)) {
             Text("Get Proverbs",
             color = Color.Blue,
             fontFamily = FontFamily.SansSerif)
