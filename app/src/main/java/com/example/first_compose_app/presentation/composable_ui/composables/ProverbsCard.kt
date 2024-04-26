@@ -2,10 +2,12 @@ package com.example.first_compose_app.presentation.composable_ui.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CardDefaults
@@ -50,7 +52,7 @@ fun TeamInfoImage(idResource:Int){
         Modifier
             .size(70.dp)
             .fillMaxSize()
-            .fillMaxHeight())
+            .height(intrinsicSize = IntrinsicSize.Max))
 }
 
 @Composable
